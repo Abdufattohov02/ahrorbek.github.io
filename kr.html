@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>내 사이트 - 메인 페이지</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  :root {
+    --bg1: #ff9a9e;
+    --bg2: #fad0c4;
+    --card: #ffffffcc;
+    --accent: #28a745;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:16px;
+    background:linear-gradient(135deg,var(--bg1),var(--bg2));
+  }
+
+  .card{
+    width:90%;
+    max-width:400px;
+    background:var(--card);
+    padding:28px;
+    border-radius:16px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.15);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    position:relative;
+  }
+
+  h1{margin:0;font-size:1.4rem;text-align:center;}
+  p{margin:0;text-align:center;color:#333;}
+
+  .buttons{width:100%;display:flex;flex-direction:column;gap:10px;margin-top:6px;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:12px 14px;
+    border-radius:10px;
+    text-decoration:none;
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+    border:none;
+    width:100%;
+    min-height:44px;
+    font-size:1rem;
+  }
+
+  .telegram{background:#0088cc;}
+  .instagram{background:#e1306c;}
+  .facebook{background:#1877f2;}
+  .tiktok{background:#010101;}
+  .phone{background:#28a745;}
+  .back-btn{background:#6c757d;color:#fff;margin-top:8px;}
+
+  .buttons a:hover, .btn:hover{
+    opacity:0.85;
+    transform:translateY(-2px);
+  }
+
+  .phone-choices{position:relative;width:100%;}
+  .choices-panel{
+    position:absolute; /* 버튼 위에 표시 */
+    top:-170px; /* 패널 높이 */
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    padding:10px;
+    display:none;
+    z-index:50;
+    flex-direction:column;
+    gap:8px;
+  }
+
+  .choice{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    padding:10px;
+    border-radius:8px;
+    transition:background .15s;
+  }
+  .choice:hover{background:#f2f2f2;}
+  .number{font-weight:600;color:#111;}
+  .choice-actions{display:flex;gap:8px;flex:1;justify-content:space-around;}
+  .small-btn{
+    padding:8px 10px;
+    border-radius:8px;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+    flex:1;
+    text-align:center;
+  }
+  .call-btn{background:#0069d9;color:#fff;}
+  .copy-btn{background:#28a745;color:#fff;}
+
+  .toast{
+    position:fixed;
+    top:24px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#222;
+    color:#fff;
+    padding:10px 14px;
+    border-radius:10px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.25);
+    display:none;
+    z-index:100;
+    font-weight:600;
+  }
+
+  @media (max-width:420px){
+    .card{padding:20px;}
+    h1{font-size:1.2rem;}
+    p{font-size:0.95rem;}
+    .btn{padding:10px;font-size:0.95rem;}
+    .choices-panel{top:-200px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="card" id="mainCard">
+  <h1>안녕하세요! 편리한 앱을 통해 저와 연락하실 수 있습니다</h1>
+  <p id="phoneIntro" style="display:none;">아래 버튼을 통해 전화번호 중 하나를 선택하여 전화하거나 복사할 수 있습니다.</p>
+
+  <div class="buttons">
+    <!-- 소셜 버튼 -->
+    <a class="btn telegram" href="https://t.me/karimovich_302" target="_blank">텔레그램</a>
+    <a class="btn instagram" href="https://instagram.com/karimovich_302" target="_blank">인스타그램</a>
+    <a class="btn facebook" href="https://facebook.com" target="_blank">페이스북</a>
+    <a class="btn tiktok" href="https://www.tiktok.com" target="_blank">틱톡</a>
+
+    <!-- 전화번호 선택 -->
+    <div class="phone-choices">
+      <button class="btn phone" id="phoneToggle">전화번호</button>
+
+      <div class="choices-panel" id="choicesPanel" aria-hidden="true">
+        <div class="choice">
+          <div class="number">+998 97 852 2002</div>
+          <div class="choice-actions">
+            <a class="small-btn call-btn" href="tel:+99897852002">전화</a>
+            <button class="small-btn copy-btn" data-number="+99897852002">복사</button>
+          </div>
+        </div>
+        <div class="choice">
+          <div class="number">+82 010 7492 5223</div>
+          <div class="choice-actions">
+            <a class="small-btn call-btn" href="tel:+8201074925223">전화</a>
+            <button class="small-btn copy-btn" data-number="+8201074925223">복사</button>
+          </div>
+        </div>
+        <!-- 전화 패널 뒤로 버튼 -->
+        <a class="btn back-btn" href="uzb.html">뒤로</a>
+      </div>
+    </div>
+
+    <!-- 메인 페이지 뒤로 버튼 -->
+    <a class="btn back-btn" href="index.html">메인 페이지로</a>
+
+  </div>
+</div>
+
+<div class="toast" id="toast">전화번호가 복사되었습니다!</div>
+
+<script>
+  const phoneToggle = document.getElementById('phoneToggle');
+  const choicesPanel = document.getElementById('choicesPanel');
+  const toast = document.getElementById('toast');
+  const phoneIntro = document.getElementById('phoneIntro');
+
+  // 전화 패널 토글
+  phoneToggle.addEventListener('click', () => {
+    const isOpen = choicesPanel.style.display === 'flex';
+    choicesPanel.style.display = isOpen ? 'none' : 'flex';
+    choicesPanel.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+    phoneIntro.style.display = isOpen ? 'none' : 'block';
+  });
+
+  // 외부 클릭 시 패널 닫기
+  document.addEventListener('click', (e) => {
+    const inside = e.composedPath().includes(choicesPanel) || e.composedPath().includes(phoneToggle);
+    if (!inside) {
+      choicesPanel.style.display = 'none';
+      phoneIntro.style.display = 'none';
+      choicesPanel.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  // 복사 기능
+  const copyBtns = document.querySelectorAll('.copy-btn');
+  copyBtns.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const num = btn.getAttribute('data-number');
+      try {
+        await navigator.clipboard.writeText(num);
+        showToast('전화번호가 복사되었습니다!');
+        choicesPanel.style.display = 'none';
+        phoneIntro.style.display = 'none';
+      } catch (err) {
+        showToast('복사 중 오류가 발생했습니다');
+      }
+    });
+  });
+
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.style.display = 'block';
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(()=>{
+      toast.style.display = 'none';
+    },2000);
+  }
+
+  // 소셜 버튼 확인
+  const socialButtons = document.querySelectorAll('.btn.telegram, .btn.instagram, .btn.facebook, .btn.tiktok');
+  socialButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const platform = btn.textContent.trim();
+      const url = btn.getAttribute('href');
+      const confirmLink = confirm(`정말 ${platform}로 이동하시겠습니까?`);
+      if(confirmLink){
+        window.open(url, '_blank');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
