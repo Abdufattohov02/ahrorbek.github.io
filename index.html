@@ -1,74 +1,125 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahrorbek Karimovich</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Poppins", sans-serif;
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            flex-direction: column;
-            text-align: center;
-        }
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 25px 35px;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            backdrop-filter: blur(10px);
-        }
-        img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-            border: 3px solid #fff;
-        }
-        h1 {
-            margin: 10px 0;
-            font-size: 24px;
-        }
-        p {
-            margin: 5px 0 20px;
-            font-size: 14px;
-            color: #f0f0f0;
-        }
-        a {
-            display: block;
-            text-decoration: none;
-            color: #fff;
-            background: rgba(255,255,255,0.2);
-            margin: 8px 0;
-            padding: 10px 20px;
-            border-radius: 10px;
-            transition: 0.3s;
-        }
-        a:hover {
-            background: rgba(255,255,255,0.4);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xush kelibsiz | Ahrorbek Karimovich</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #a1c4fd, #c2e9fb, #ff9a9e, #fad0c4);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Karta */
+.card {
+  background: rgba(0,0,0,0.6);
+  border-radius: 25px;
+  padding: 40px 50px;
+  text-align: center;
+  color: #fff;
+  width: 400px;
+  max-width: 90%;
+  box-sizing: border-box;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+}
+
+/* Sarlavha */
+h1 {
+  font-size: 30px;
+  margin: 10px 0;
+  text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+/* Tugmalar */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  padding: 14px;
+  border-radius: 15px;
+  font-weight: 600;
+  transition: 0.3s;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+
+a:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Tugma ranglari */
+.uzbek { background: #1abc9c; }
+.uzbek:hover { background: #16a085; }
+
+.korean { background: #3498db; }
+.korean:hover { background: #2980b9; }
+
+.english { background: #9b59b6; }
+.english:hover { background: #8e44ad; }
+
+/* Responsive */
+@media(max-width:500px){
+  .card { padding: 30px 20px; }
+  h1 { font-size: 24px; }
+  p { font-size: 14px; }
+  a { padding: 10px; font-size: 14px; }
+}
+</style>
 </head>
 <body>
-    <div class="card">
-        <!-- Profil rasmi -->
-        <img src="https://via.placeholder.com/120" alt="Profil rasmi">
-        
-        <!-- Ism va ma'lumot -->
-        <h1>Ahrorbek Abduffattohov</h1>
-        <p>Korea Student</p>
 
-        <!-- Kontakt tugmalari -->
-        <a href="https://t.me/Abduffattohov02" target="_blank">📱 Telegram</a>
-        <a href="https://instagram.com/Abduffattohov02" target="_blank">📸 Instagram</a>
-        <a href="tel:+998882100902">📞 +998 97 852 20002</a>
-    </div>
+<div class="card">
+  <h2>Tilni tanlang:</h2>
+  <h1>언어를 선택하세요:</h1>
+  <h2>Select language:</h2>
+  <div class="buttons">
+    <a href="uz.html" class="uzbek">🇺🇿 Assalomu alaykum!</a>
+    <a href="kr.html" class="korean">🇰🇷 안녕하세요!</a>
+    <a href="eng.html" class="english">eng Hello!</a>
+  </div>
+</div>
+
 </body>
 </html>
